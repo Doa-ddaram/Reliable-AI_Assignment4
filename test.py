@@ -1,11 +1,12 @@
 import time
 import torch
 import torch.nn as nn
+import torch.optim as optim
+from torch.utils.data import DataLoader
 from torchvision.datasets import MNIST
 from torchvision import transforms
-from maraboupy import Marabou
 
-# Define the same MLP model structure
+
 class MLP(nn.Module):
     def __init__(self):
         super(MLP, self).__init__()
@@ -21,24 +22,6 @@ class MLP(nn.Module):
         x = self.relu(x)
         x = self.fc2(x)
         return x
-    
-def export_to_onnx(pytorch_path, onnx_path):
-    # Load PyTorch model
-    model = MLP()
-    model.load_state_dict(torch.load(pytorch_path))
-    model.eval()
-    
-    # Create a dummy input tensor matching the MNIST image shape
-    dummy_input = torch.randn(1, 1, 28, 28)
-    
-    # Export to ONNX format
-    torch.onnx.export(model, dummy_input, onnx_path, 
-                      export_params=True, 
-                      opset_version=11, 
-                      do_constant_folding=True, 
-                      input_names=['input'], 
-                      output_names=['output'])
-    print(f"Model successfully exported to {onnx_path}")
     
 def build_model(model_weights_path=None, **kwargs):
     # Initialize the model
