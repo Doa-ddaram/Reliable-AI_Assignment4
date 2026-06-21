@@ -10,6 +10,6 @@ gurobipy
 psutil
 pandas
 
-#for Marabou verification
+# for Marabou verification
 maraboupy
 onnxscript
