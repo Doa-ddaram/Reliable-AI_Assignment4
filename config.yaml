@@ -1,0 +1,19 @@
+model:
+  # "model" refers to model.py, "build_model" is the function name
+  name: Customized("train", "build_model")
+  path: ./mlp_mnist.pth
+data:
+  # Target dataset (automatically downloaded if not present)
+  dataset: MNIST
+  # Verification range
+  start: 0
+  end: 50
+specification:
+  # Robustness radius (\epsilon) for L_inf norm
+  epsilon: 0.01
+solver:
+  # Batch size for GPU processing (adjust based on your VRAM)
+  batch_size: 256
+bab:
+  # Branch and Bound timeout in seconds per image
+  timeout: 120
