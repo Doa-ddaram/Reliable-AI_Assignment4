@@ -9,4 +9,7 @@ skl2onnx
 gurobipy
 psutil
 pandas
+
+#for Marabou verification
 maraboupy
+onnxscript
