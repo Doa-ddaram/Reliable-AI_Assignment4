@@ -1,6 +1,6 @@
 model:
   # "model" refers to model.py, "build_model" is the function name
-  name: Customized("train", "build_model")
+  name: Customized("test", "build_model")
   path: ./mlp_mnist.pth
 data:
   # Target dataset (automatically downloaded if not present)
